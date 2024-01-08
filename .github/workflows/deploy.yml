@@ -14,8 +14,8 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-      - uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name : Build and push DOcker Image
+        run: |
+           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "prasad231" --password-stdin
+           docker image build -t prasad231/nodejs2:latest1 .
+           docker push prasad231/nodejs2:latest1
