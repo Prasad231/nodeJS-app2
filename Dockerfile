@@ -1,4 +1,4 @@
-#This is a sample Image 
+ #This is a sample Image 
 FROM ubuntu 
 MAINTAINER Prasadjadhav231@outlook.com 
 RUN apt-get update 
