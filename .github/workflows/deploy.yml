@@ -1,0 +1,21 @@
+name: Firebase Continuous Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm run build
+      - name : Build and push DOcker Image
+        run: |
+           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "prasad231" --password-stdin
+           docker image build -t prasad231/nodejs2:latest2 .
+           docker push prasad231/nodejs2:latest2
