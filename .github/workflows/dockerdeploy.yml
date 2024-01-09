@@ -14,7 +14,7 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-      - name : Build and push DOcker Image
+      - name : Build and push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
              image: prasad231/repo1
