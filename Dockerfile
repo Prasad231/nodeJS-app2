@@ -1,7 +1,8 @@
- #This is a sample Image 
-FROM ubuntu 
-MAINTAINER Prasadjadhav231@outlook.com 
-
-RUN apt-get update 
-RUN apt-get install
-CMD [“echo”,”Image created”] 
+FROM node:18.16.0-alpine3.17
+RUN mkdir -p /opt/app
+WORKDIR /opt/app
+COPY src/package.json src/package-lock.json .
+RUN npm install
+COPY src/ .
+EXPOSE 3000
+CMD [ "npm", "start"]
