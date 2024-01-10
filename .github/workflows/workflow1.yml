@@ -2,7 +2,8 @@ name: workflow1
 
 on : 
   push:
-    - main
+    branches :
+        - master
 
 jobs:
 
